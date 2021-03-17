@@ -15,8 +15,10 @@ export class VariablesManualesEntity {
     @PrimaryColumn()
     anio: string;
     @Column()
-    valor: string;
+    valor: number;
     @Column()
     cod_2000:string;
+    @Column()
+    fecha_actu:Date
 
 }

@@ -12,13 +12,19 @@ import { UsuariosModule } from './usuarios/usuarios.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mssql',
-      host: 'localhost',
+      host: '172.18.20.26',
       port: 1433,
       username: 'sa',
-      password: '.',
+      password: 'P4ssw0rd123',
       database: 'risc_2030',
       entities: ["dist/**/*.entity{.ts,.js}"],
       synchronize: false,
+      options: {
+        cryptoCredentialsDetails: {
+          minVersion: 'TLSv1'
+        }
+      }
+    
     }),
     VariablesManualesModule,
     ActividadesModule,

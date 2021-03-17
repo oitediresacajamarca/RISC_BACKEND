@@ -23,7 +23,7 @@ export class VariablesManualesController {
     @Put('devolver')
     async DevolverVariable(@Body() datos:any) {        
         const resul = await this.variabless.DevolverVariable(datos)
-        console.log(datos)
+      
         return resul;
     }
 

@@ -4,7 +4,7 @@ import { ActividadesRepository } from './actividades.repository';
 @Injectable()
 export class ActividadesService {
     constructor(private actividadesr:ActividadesRepository){
-
+console.log(1)
     }
 
     async devolverLista(){
@@ -12,7 +12,8 @@ export class ActividadesService {
         return result;
     }
     async devolverActividad(id:string){      
-        const result=await   this.actividadesr.findOne({idactividad:id})    
+        const result=await   this.actividadesr.findOne({idactividad:id})   
+       
         return result;
        }
 }

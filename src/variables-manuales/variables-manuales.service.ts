@@ -11,10 +11,41 @@ export class VariablesManualesService {
     return resp;
   }
   async guardarVariable(datos) {
-    const resp = await this.variablesm.create(datos)
+    let resp
+    let resp1
+    if(datos.valor=='0'){
+      console.log(datos)
+          }
+   
 
-    const resp1 = await this.variablesm.save(resp)
+   if(datos.valor!='' && datos.valor != undefined ){
+   let ex= await  this.variablesm.findOne({where:{cod_2000:datos.cod_2000,anio:datos.anio,idactividad:datos.idactividad,mes:datos.mes}})
+ 
+
+   if(ex !=undefined){
+    ex.valor=datos.valor
+    ex.fecha_actu=new Date()
+
+    resp=ex
+    resp1 = await this.variablesm.update({cod_2000:datos.cod_2000,anio:datos.anio,idactividad:datos.idactividad,mes:datos.mes},resp)
   
+
+   }
+   else{
+    resp =  this.variablesm.create(datos)
+    resp.fecha_actu=new Date()
+    resp1 = await this.variablesm.save(resp)
+   }
+  
+   
+
+  
+    }
+    if (datos.valor=='' || datos.valor==0 ){
+      resp1=  await  this.variablesm.delete({cod_2000:datos.cod_2000,anio:datos.anio,idactividad:datos.idactividad,mes:datos.mes})
+    }
+    console.log(resp1)
+
     return resp1;
   }
 
