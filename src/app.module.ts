@@ -7,15 +7,16 @@ import { ActividadesModule } from './actividades/actividades.module';
 import { ReportesModule } from './reportes/reportes.module';
 import { DistribucionIpressModule } from './distribucion-ipress/distribucion-ipress.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { MaestroEstablecimientoModule } from './admin/maestro-establecimiento/maestro-establecimiento.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mssql',
-      host: '172.18.20.26',
+      host: 'localhost',
       port: 1433,
       username: 'sa',
-      password: 'P4ssw0rd123',
+      password: '.',
       database: 'risc_2030',
       entities: ["dist/**/*.entity{.ts,.js}"],
       synchronize: false,
@@ -30,7 +31,8 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     ActividadesModule,
     ReportesModule,
     DistribucionIpressModule,
-    UsuariosModule],
+    UsuariosModule,
+    MaestroEstablecimientoModule],
   controllers: [AppController],
   providers: [AppService],
 })
